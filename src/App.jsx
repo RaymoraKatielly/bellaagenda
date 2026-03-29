@@ -1,32 +1,30 @@
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
+import Dashboard from './pages/dashboard/Dashboard'
 import { useAuth } from './hooks/useAuth'
 
 function App() {
-  const { user, loading, signOut } = useAuth()
-
-  async function handleLogout() {
-    try {
-      await signOut()
-    } catch (error) {
-      console.error('Erro ao sair:', error.message)
-    }
-  }
+  const { user, loading } = useAuth()
 
   if (loading) {
     return <h1>Carregando...</h1>
   }
 
-  if (!user) {
-    return <Login />
-  }
-
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>BellaAgenda</h1>
-      <p>Usuário logado: {user.email}</p>
-
-      <button onClick={handleLogout}>Sair</button>
-    </div>
+    <Routes>
+      <Route
+        path="/login"
+        element={user ? <Navigate to="/dashboard" /> : <Login />}
+      />
+      <Route
+        path="/dashboard"
+        element={user ? <Dashboard /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="*"
+        element={<Navigate to={user ? '/dashboard' : '/login'} />}
+      />
+    </Routes>
   )
 }
 
