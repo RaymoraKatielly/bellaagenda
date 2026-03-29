@@ -1,3 +1,4 @@
+import Login from './pages/auth/Login'
 import { useAuth } from './hooks/useAuth'
 
 function App() {
@@ -7,10 +8,14 @@ function App() {
     return <h1>Carregando...</h1>
   }
 
+  if (!user) {
+    return <Login />
+  }
+
   return (
-    <div>
+    <div style={{ padding: '2rem' }}>
       <h1>BellaAgenda</h1>
-      <p>{user ? `Usuário logado: ${user.email}` : 'Nenhum usuário logado'}</p>
+      <p>Usuário logado: {user.email}</p>
     </div>
   )
 }
