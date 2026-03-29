@@ -1,29 +1,31 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/dashboard/Dashboard'
-import { useAuth } from './hooks/useAuth'
+import PrivateRoute from './routes/PrivateRoute'
+import PublicRoute from './routes/PublicRoute'
 
 function App() {
-  const { user, loading } = useAuth()
-
-  if (loading) {
-    return <h1>Carregando...</h1>
-  }
-
   return (
     <Routes>
       <Route
         path="/login"
-        element={user ? <Navigate to="/dashboard" /> : <Login />}
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
       />
+
       <Route
         path="/dashboard"
-        element={user ? <Dashboard /> : <Navigate to="/login" />}
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
       />
-      <Route
-        path="*"
-        element={<Navigate to={user ? '/dashboard' : '/login'} />}
-      />
+
+      <Route path="*" element={<Navigate to="/dashboard" />} />
     </Routes>
   )
 }
