@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/dashboard/Dashboard'
 import Clients from './pages/clients/Clients'
+import Agenda from './pages/agenda/Agenda'
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
 
@@ -26,14 +27,23 @@ function App() {
         }
       />
 
-  <Route
-  path="/clients"
-  element={
-    <PrivateRoute>
-      <Clients />
-    </PrivateRoute>
-  }
-  />
+      <Route
+        path="/clients"
+        element={
+          <PrivateRoute>
+            <Clients />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/agenda"
+        element={
+          <PrivateRoute>
+            <Agenda />
+          </PrivateRoute>
+        }
+      />
 
       <Route path="*" element={<Navigate to="/dashboard" />} />
     </Routes>

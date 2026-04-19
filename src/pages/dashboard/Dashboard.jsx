@@ -31,10 +31,13 @@ function Dashboard() {
     Clientes
   </Link>
 
-  <p className="cursor-pointer rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition">
-    Agenda
-  </p>
-</nav>
+  <Link
+  to="/agenda"
+  className="block rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition"
+>
+  Agenda
+</Link>
+        </nav>
         </div>
 
         <button
