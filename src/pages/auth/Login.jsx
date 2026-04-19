@@ -24,23 +24,26 @@ function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f5f3f0]">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
-        
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-2">
+    <div className="min-h-screen flex items-center justify-center bg-[#f7f3ee]">
+
+      <div className="w-full max-w-md bg-white p-10 rounded-3xl shadow-sm border border-[#efe4db]">
+
+        {/* Título */}
+        <h1 className="text-3xl font-bold text-center text-[#4e342e] mb-2">
           BellaAgenda
         </h1>
 
-        <p className="text-center text-gray-500 mb-6">
-          Faça login para continuar
+        <p className="text-center text-[#8d6e63] mb-8">
+          Seu controle de agenda premium
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Formulário */}
+        <form onSubmit={handleSubmit} className="space-y-5">
 
           <input
             type="email"
             placeholder="Seu e-mail"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full px-4 py-3 rounded-xl border border-[#e0d6cd] focus:outline-none focus:ring-2 focus:ring-[#d7a86e]"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -48,7 +51,7 @@ function Login() {
           <input
             type="password"
             placeholder="Sua senha"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full px-4 py-3 rounded-xl border border-[#e0d6cd] focus:outline-none focus:ring-2 focus:ring-[#d7a86e]"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -56,7 +59,7 @@ function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-orange-400 hover:bg-orange-500 text-white font-semibold rounded-lg transition"
+            className="w-full py-3 rounded-xl bg-[#d7a86e] text-[#3e2723] font-semibold hover:bg-[#c9975c] transition"
           >
             {loading ? 'Entrando...' : 'Entrar'}
           </button>
