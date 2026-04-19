@@ -8,23 +8,21 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-
-      {/* SIDEBAR */}
-      <aside className="w-64 bg-white shadow-md p-6 flex flex-col justify-between">
+    <div className="flex min-h-screen bg-[#f7f3ee]">
+      <aside className="w-64 min-h-screen bg-[#4e342e] text-white shadow-xl p-6 flex flex-col justify-between">
         <div>
-          <h1 className="text-xl font-bold text-gray-800 mb-8">
+          <h1 className="text-2xl font-bold tracking-wide mb-10 text-[#f7e7ce]">
             BellaAgenda
           </h1>
 
-          <nav className="space-y-3">
-            <p className="text-gray-600 hover:text-orange-500 cursor-pointer">
+          <nav className="space-y-4">
+            <p className="cursor-pointer rounded-lg px-3 py-2 bg-[#6d4c41] text-[#fff8f0]">
               Dashboard
             </p>
-            <p className="text-gray-600 hover:text-orange-500 cursor-pointer">
+            <p className="cursor-pointer rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition">
               Clientes
             </p>
-            <p className="text-gray-600 hover:text-orange-500 cursor-pointer">
+            <p className="cursor-pointer rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition">
               Agenda
             </p>
           </nav>
@@ -32,46 +30,42 @@ function Dashboard() {
 
         <button
           onClick={handleLogout}
-          className="mt-10 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg transition"
+          className="w-full rounded-xl bg-[#d7a86e] py-3 font-semibold text-[#3e2723] hover:bg-[#c9975c] transition"
         >
           Sair
         </button>
       </aside>
 
-      {/* CONTEÚDO */}
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-10">
+        <div className="mb-10 flex items-center justify-between">
+          <div>
+            <h2 className="text-3xl font-bold text-[#4e342e]">Dashboard</h2>
+            <p className="mt-1 text-sm text-[#8d6e63]">
+              Bem-vinda ao seu painel premium
+            </p>
+          </div>
 
-        {/* HEADER */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800">
-            Dashboard
-          </h2>
-
-          <p className="text-gray-600 text-sm">
+          <div className="rounded-full bg-white px-5 py-2 shadow-sm border border-[#eadfd6] text-sm text-[#6d4c41]">
             {user?.email}
-          </p>
+          </div>
         </div>
 
-        {/* CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-gray-500 text-sm">Clientes</h3>
-            <p className="text-2xl font-bold text-gray-800">0</p>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="rounded-2xl bg-white p-6 shadow-sm border border-[#efe4db] hover:shadow-md transition">
+            <h3 className="text-sm text-[#a1887f]">Clientes</h3>
+            <p className="mt-2 text-3xl font-bold text-[#4e342e]">0</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-gray-500 text-sm">Agendamentos</h3>
-            <p className="text-2xl font-bold text-gray-800">0</p>
+          <div className="rounded-2xl bg-white p-6 shadow-sm border border-[#efe4db] hover:shadow-md transition">
+            <h3 className="text-sm text-[#a1887f]">Agendamentos</h3>
+            <p className="mt-2 text-3xl font-bold text-[#4e342e]">0</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-gray-500 text-sm">Faturamento</h3>
-            <p className="text-2xl font-bold text-gray-800">R$ 0</p>
+          <div className="rounded-2xl bg-white p-6 shadow-sm border border-[#efe4db] hover:shadow-md transition">
+            <h3 className="text-sm text-[#a1887f]">Faturamento</h3>
+            <p className="mt-2 text-3xl font-bold text-[#4e342e]">R$ 0</p>
           </div>
-
         </div>
-
       </main>
     </div>
   )
