@@ -41,7 +41,7 @@ function Dashboard() {
           <div>
             <h2 className="text-3xl font-bold text-[#4e342e]">Dashboard</h2>
             <p className="mt-1 text-sm text-[#8d6e63]">
-              Bem-vinda ao seu painel premium
+              Bem-vinda ao seu painel
             </p>
           </div>
 

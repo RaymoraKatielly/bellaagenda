@@ -34,7 +34,7 @@ function Login() {
         </h1>
 
         <p className="text-center text-[#8d6e63] mb-8">
-          Seu controle de agenda premium
+          Seu controle de sua agenda
         </p>
 
         {/* Formulário */}

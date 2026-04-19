@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/dashboard/Dashboard'
+import Clients from './pages/clients/clients'
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
 
@@ -24,6 +25,15 @@ function App() {
           </PrivateRoute>
         }
       />
+
+  <Route
+  path="/clients"
+  element={
+    <PrivateRoute>
+      <clients />
+    </PrivateRoute>
+  }
+  />
 
       <Route path="*" element={<Navigate to="/dashboard" />} />
     </Routes>
