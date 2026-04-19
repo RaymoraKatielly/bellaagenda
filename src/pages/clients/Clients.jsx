@@ -107,5 +107,36 @@ function Clients() {
     </div>
   )
 }
+<div className="mt-10">
+  <h2 className="mb-4 text-xl font-semibold text-[#4e342e]">
+    Lista de Clientes
+  </h2>
+
+  {clients.length === 0 ? (
+    <p className="text-[#8d6e63]">Nenhum cliente cadastrado ainda.</p>
+  ) : (
+    <div className="space-y-4">
+      {clients.map((client) => (
+        <div
+          key={client.id}
+          className="rounded-2xl border border-[#efe4db] bg-white p-4 shadow-sm"
+        >
+          <p>
+            <strong>Nome:</strong> {client.name}
+          </p>
+          <p>
+            <strong>Telefone:</strong> {client.phone || '—'}
+          </p>
+          <p>
+            <strong>Email:</strong> {client.email || '—'}
+          </p>
+          <p>
+            <strong>Observações:</strong> {client.notes || '—'}
+          </p>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
 
 export default Clients
