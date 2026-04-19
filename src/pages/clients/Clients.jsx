@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { supabase } from '../../services/supabase/client'
 import { useAuth } from '../../hooks/useAuth'
 
@@ -10,6 +10,23 @@ function Clients() {
   const [email, setEmail] = useState('')
   const [notes, setNotes] = useState('')
   const [loading, setLoading] = useState(false)
+  const [clients, setClients] = useState([])
+
+  useEffect(() => {
+    fetchClients()
+  }, [])
+
+  async function fetchClients() {
+    const { data, error } = await supabase
+      .from('clients')
+      .select('*')
+
+    if (error) {
+      console.error('Erro ao buscar clientes:', error)
+    } else {
+      setClients(data)
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -34,6 +51,7 @@ function Clients() {
       setPhone('')
       setEmail('')
       setNotes('')
+      fetchClients()
     }
 
     setLoading(false)

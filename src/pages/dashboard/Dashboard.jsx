@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
 function Dashboard() {
@@ -15,17 +16,25 @@ function Dashboard() {
             BellaAgenda
           </h1>
 
-          <nav className="space-y-4">
-            <p className="cursor-pointer rounded-lg px-3 py-2 bg-[#6d4c41] text-[#fff8f0]">
-              Dashboard
-            </p>
-            <p className="cursor-pointer rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition">
-              Clientes
-            </p>
-            <p className="cursor-pointer rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition">
-              Agenda
-            </p>
-          </nav>
+         <nav className="space-y-4">
+  <Link
+    to="/dashboard"
+    className="block rounded-lg px-3 py-2 bg-[#6d4c41] text-[#fff8f0]"
+  >
+    Dashboard
+  </Link>
+
+  <Link
+    to="/clients"
+    className="block rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition"
+  >
+    Clientes
+  </Link>
+
+  <p className="cursor-pointer rounded-lg px-3 py-2 text-[#f3e5d8] hover:bg-[#6d4c41] transition">
+    Agenda
+  </p>
+</nav>
         </div>
 
         <button

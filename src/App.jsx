@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/dashboard/Dashboard'
-import Clients from './pages/clients/clients'
+import Clients from './pages/clients/Clients'
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
 
@@ -30,7 +30,7 @@ function App() {
   path="/clients"
   element={
     <PrivateRoute>
-      <clients />
+      <Clients />
     </PrivateRoute>
   }
   />
