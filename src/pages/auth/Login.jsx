@@ -24,38 +24,48 @@ function Login() {
   }
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Login</h1>
+    <div className="min-h-screen flex items-center justify-center bg-[#f5f3f0]">
+      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
+        
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-2">
+          BellaAgenda
+        </h1>
 
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '1rem' }}>
-          <label>E-mail</label>
-          <br />
+        <p className="text-center text-gray-500 mb-6">
+          Faça login para continuar
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+
           <input
             type="email"
+            placeholder="Seu e-mail"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Digite seu e-mail"
           />
-        </div>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label>Senha</label>
-          <br />
           <input
             type="password"
+            placeholder="Sua senha"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Digite sua senha"
           />
-        </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Entrando...' : 'Entrar'}
-        </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-orange-400 hover:bg-orange-500 text-white font-semibold rounded-lg transition"
+          >
+            {loading ? 'Entrando...' : 'Entrar'}
+          </button>
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      </form>
+          {error && (
+            <p className="text-red-500 text-sm text-center">{error}</p>
+          )}
+        </form>
+      </div>
     </div>
   )
 }
