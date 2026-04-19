@@ -1,8 +1,32 @@
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Login from './pages/auth/Login'
+import Dashboard from './pages/dashboard/Dashboard'
+import PrivateRoute from './routes/PrivateRoute'
+import PublicRoute from './routes/PublicRoute'
+
 function App() {
   return (
-    <div className="min-h-screen bg-red-500 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-white">Tailwind funcionando</h1>
-    </div>
+    <Routes>
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
+
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+
+      <Route path="*" element={<Navigate to="/dashboard" />} />
+    </Routes>
   )
 }
 
