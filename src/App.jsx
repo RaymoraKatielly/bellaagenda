@@ -1,3 +1,4 @@
+import MainLayout from './components/layout/MainLayout'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/dashboard/Dashboard'
@@ -5,7 +6,7 @@ import Clients from './pages/clients/Clients'
 import Agenda from './pages/agenda/Agenda'
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
-import Services from "./pages/Services";
+import Services from './pages/Services'
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
         path="/dashboard"
         element={
           <PrivateRoute>
-            <Dashboard />
+            <MainLayout title="Dashboard">
+              <Dashboard />
+            </MainLayout>
           </PrivateRoute>
         }
       />
@@ -32,7 +35,9 @@ function App() {
         path="/clients"
         element={
           <PrivateRoute>
-            <Clients />
+            <MainLayout title="Clientes">
+              <Clients />
+            </MainLayout>
           </PrivateRoute>
         }
       />
@@ -41,19 +46,24 @@ function App() {
         path="/agenda"
         element={
           <PrivateRoute>
-            <Agenda />
+            <MainLayout title="Agenda">
+              <Agenda />
+            </MainLayout>
           </PrivateRoute>
         }
       />
 
-     <Route
-  path="/services"
-  element={
-    <PrivateRoute>
-      <Services />
-    </PrivateRoute>
-  }
-/>
+      <Route
+        path="/services"
+        element={
+          <PrivateRoute>
+            <MainLayout title="Serviços">
+              <Services />
+            </MainLayout>
+          </PrivateRoute>
+        }
+      />
+
       <Route path="*" element={<Navigate to="/dashboard" />} />
     </Routes>
   )

@@ -3,11 +3,15 @@ import Header from './Header'
 
 function MainLayout({ children, title = 'BellaAgenda' }) {
   return (
-    <div className="app-shell">
+    <div className="min-h-screen bg-[#f7f3ee] flex">
       <Sidebar />
-      <div className="app-content">
+
+      <div className="flex-1 ml-64">
         <Header title={title} />
-        <main className="page-content">{children}</main>
+
+        <main className="p-8">
+          {children}
+        </main>
       </div>
     </div>
   )
