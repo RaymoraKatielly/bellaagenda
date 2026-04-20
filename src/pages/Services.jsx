@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../services/supabase/client";
 
-export default function Services() {
+function Services() {
   const [services, setServices] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [duration, setDuration] = useState(60);
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   async function fetchServices() {
     setLoading(true);
@@ -25,10 +29,6 @@ export default function Services() {
 
     setLoading(false);
   }
-
-  useEffect(() => {
-    fetchServices();
-  }, []);
 
   function resetForm() {
     setName("");
@@ -95,7 +95,7 @@ export default function Services() {
     fetchServices();
   }
 
-  async function handleEdit(service) {
+  function handleEdit(service) {
     setEditingId(service.id);
     setName(service.name);
     setPrice(service.price);
@@ -128,23 +128,23 @@ export default function Services() {
   }
 
   return (
-    <div className="p-6">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-zinc-800">Serviços</h1>
-        <p className="text-sm text-zinc-500">
-          Cadastre os serviços que o salão oferece.
+    <div className="w-full">
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold text-[#4e342e]">Serviços</h2>
+        <p className="mt-1 text-sm text-[#8d6e63]">
+          Cadastre os serviços oferecidos no salão.
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl bg-white p-6 shadow-sm border border-zinc-200">
-          <h2 className="mb-4 text-lg font-semibold text-zinc-800">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+        <div className="rounded-2xl border border-[#efe4db] bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-2xl font-bold text-[#4e342e]">
             {editingId ? "Editar serviço" : "Novo serviço"}
-          </h2>
+          </h3>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="mb-1 block text-sm font-medium text-zinc-700">
+              <label className="mb-1 block text-sm font-medium text-[#6d4c41]">
                 Nome do serviço
               </label>
               <input
@@ -152,12 +152,12 @@ export default function Services() {
                 placeholder="Ex: Corte feminino"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-orange-400"
+                className="w-full rounded-xl border border-[#d8c7bb] px-4 py-3 outline-none focus:border-[#c9975c]"
               />
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-zinc-700">
+              <label className="mb-1 block text-sm font-medium text-[#6d4c41]">
                 Valor
               </label>
               <input
@@ -167,12 +167,12 @@ export default function Services() {
                 placeholder="Ex: 80.00"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-                className="w-full rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-orange-400"
+                className="w-full rounded-xl border border-[#d8c7bb] px-4 py-3 outline-none focus:border-[#c9975c]"
               />
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-zinc-700">
+              <label className="mb-1 block text-sm font-medium text-[#6d4c41]">
                 Duração (minutos)
               </label>
               <input
@@ -181,14 +181,14 @@ export default function Services() {
                 placeholder="Ex: 60"
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
-                className="w-full rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-orange-400"
+                className="w-full rounded-xl border border-[#d8c7bb] px-4 py-3 outline-none focus:border-[#c9975c]"
               />
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 pt-2">
               <button
                 type="submit"
-                className="rounded-xl bg-orange-500 px-5 py-3 font-medium text-white hover:bg-orange-600"
+                className="rounded-xl bg-[#d7a86e] px-5 py-3 font-semibold text-[#3e2723] transition hover:bg-[#c9975c]"
               >
                 {editingId ? "Salvar alterações" : "Cadastrar serviço"}
               </button>
@@ -197,7 +197,7 @@ export default function Services() {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="rounded-xl border border-zinc-300 px-5 py-3 font-medium text-zinc-700 hover:bg-zinc-100"
+                  className="rounded-xl border border-[#d8c7bb] px-5 py-3 font-semibold text-[#6d4c41] hover:bg-[#f7f3ee]"
                 >
                   Cancelar
                 </button>
@@ -206,27 +206,27 @@ export default function Services() {
           </form>
         </div>
 
-        <div className="rounded-2xl bg-white p-6 shadow-sm border border-zinc-200">
-          <h2 className="mb-4 text-lg font-semibold text-zinc-800">
+        <div className="rounded-2xl border border-[#efe4db] bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-2xl font-bold text-[#4e342e]">
             Lista de serviços
-          </h2>
+          </h3>
 
           {loading ? (
-            <p className="text-zinc-500">Carregando serviços...</p>
+            <p className="text-[#8d6e63]">Carregando serviços...</p>
           ) : services.length === 0 ? (
-            <p className="text-zinc-500">Nenhum serviço cadastrado ainda.</p>
+            <p className="text-[#8d6e63]">Nenhum serviço cadastrado ainda.</p>
           ) : (
             <div className="space-y-3">
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="flex items-center justify-between rounded-xl border border-zinc-200 p-4"
+                  className="flex items-center justify-between rounded-xl border border-[#efe4db] p-4"
                 >
                   <div>
-                    <h3 className="font-semibold text-zinc-800">
+                    <h4 className="font-semibold text-[#4e342e]">
                       {service.name}
-                    </h3>
-                    <p className="text-sm text-zinc-500">
+                    </h4>
+                    <p className="text-sm text-[#8d6e63]">
                       {formatCurrency(service.price)} • {service.duration_minutes} min
                     </p>
                   </div>
@@ -234,13 +234,13 @@ export default function Services() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleEdit(service)}
-                      className="rounded-lg bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-200"
+                      className="rounded-lg bg-[#f7f3ee] px-4 py-2 text-sm font-medium text-[#6d4c41] hover:bg-[#efe4db]"
                     >
                       Editar
                     </button>
                     <button
                       onClick={() => handleDelete(service.id)}
-                      className="rounded-lg bg-red-100 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-200"
+                      className="rounded-lg bg-red-50 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-100"
                     >
                       Excluir
                     </button>
@@ -254,3 +254,5 @@ export default function Services() {
     </div>
   );
 }
+
+export default Services;

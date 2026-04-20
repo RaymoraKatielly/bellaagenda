@@ -1,16 +1,16 @@
 import Sidebar from './Sidebar'
 import Header from './Header'
 
-function MainLayout({ children, title = 'BellaAgenda' }) {
+function MainLayout({ children }) {
   return (
     <div className="min-h-screen bg-[#f7f3ee]">
       <Sidebar />
 
-      <div className="ml-64 min-h-screen">
-        <Header title={title} />
+      <div className="ml-56 min-h-screen">
+        <Header />
 
-        <main className="p-8">
-          <div className="mx-auto max-w-7xl">
+        <main className="p-6">
+          <div className="mx-auto max-w-6xl">
             {children}
           </div>
         </main>

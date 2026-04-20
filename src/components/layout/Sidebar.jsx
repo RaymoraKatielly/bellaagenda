@@ -26,39 +26,39 @@ function Sidebar() {
   }
 
   return (
-    <aside className="fixed top-0 left-0 z-40 flex h-screen w-64 flex-col justify-between bg-[#4e342e] text-white shadow-xl">
+    <aside className="fixed left-0 top-0 z-40 flex h-screen w-56 flex-col justify-between bg-[#4e342e] text-white shadow-xl">
       <div>
-        <div className="border-b border-[#6d4c41] px-6 py-6">
-          <h1 className="text-3xl font-bold text-[#f7e7ce]">BellaAgenda</h1>
+        <div className="border-b border-[#6d4c41] px-4 py-5">
+          <h1 className="text-2xl font-bold text-[#f7e7ce]">BellaAgenda</h1>
           <p className="mt-1 text-sm text-[#e8d7c8]">Gestão para beleza</p>
         </div>
 
-        <nav className="space-y-2 p-4">
+        <nav className="space-y-1 p-3">
           {menuItems.map(({ to, label, icon: Icon }) => (
             <NavLink
               key={to}
               to={to}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium transition ${
+                `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
                   isActive
                     ? 'bg-[#6d4c41] text-white'
                     : 'text-[#f3e5d8] hover:bg-[#5d4037]'
                 }`
               }
             >
-              <Icon size={18} />
+              <Icon size={17} />
               <span>{label}</span>
             </NavLink>
           ))}
         </nav>
       </div>
 
-      <div className="border-t border-[#6d4c41] p-4">
+      <div className="border-t border-[#6d4c41] p-3">
         <p className="mb-3 truncate text-sm text-[#f3e5d8]">{user?.email}</p>
 
         <button
           onClick={handleLogout}
-          className="w-full rounded-xl bg-[#d7a86e] py-3 font-semibold text-[#3e2723] transition hover:bg-[#c9975c]"
+          className="w-full rounded-xl bg-[#d7a86e] py-2.5 font-semibold text-[#3e2723] transition hover:bg-[#c9975c]"
         >
           Sair
         </button>
