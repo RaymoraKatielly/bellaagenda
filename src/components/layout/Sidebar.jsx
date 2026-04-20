@@ -11,8 +11,8 @@ import {
 function Sidebar() {
   const menuItems = [
     { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { to: '/appointments', label: 'Agenda', icon: CalendarDays },
     { to: '/clients', label: 'Clientes', icon: Users },
+    { to: '/agenda', label: 'Agenda', icon: CalendarDays },
     { to: '/services', label: 'Serviços', icon: Scissors },
     { to: '/financial', label: 'Financeiro', icon: Wallet },
     { to: '/settings', label: 'Configurações', icon: Settings }

@@ -5,6 +5,7 @@ import Clients from './pages/clients/Clients'
 import Agenda from './pages/agenda/Agenda'
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
+import Services from "./pages/Services";
 
 function App() {
   return (
@@ -45,6 +46,14 @@ function App() {
         }
       />
 
+     <Route
+  path="/services"
+  element={
+    <PrivateRoute>
+      <Services />
+    </PrivateRoute>
+  }
+/>
       <Route path="*" element={<Navigate to="/dashboard" />} />
     </Routes>
   )
