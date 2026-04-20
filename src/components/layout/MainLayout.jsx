@@ -6,7 +6,7 @@ function MainLayout({ children }) {
     <div className="min-h-screen bg-[#f7f3ee]">
       <Sidebar />
 
-      <div className="ml-56 min-h-screen">
+      <div className="min-h-screen pl-56">
         <Header />
 
         <main className="p-6">
